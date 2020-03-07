@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:tictactoe/components/scoreboard.dart';
+import 'package:tictactoe/styles/constants.dart';
 
 class GameScreen extends StatefulWidget {
   @override
@@ -29,36 +31,9 @@ class _GameScreenState extends State<GameScreen> {
       body: SafeArea(
         child: Column(
           children: <Widget>[
-            Expanded(
-              child: Container(
-                child: Column(
-                  children: <Widget>[
-                    Text(
-                      "SCOREBOARD",
-                      style: TextStyle(color: Colors.white, fontSize: 30),
-                    ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: <Widget>[
-                        Padding(
-                          padding: const EdgeInsets.all(20.0),
-                          child: Text(
-                            "PLAYER X:  $xScore",
-                            style: TextStyle(color: Colors.white, fontSize: 20),
-                          ),
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.all(20.0),
-                          child: Text(
-                            "PLAYER O:  $oScore",
-                            style: TextStyle(color: Colors.white, fontSize: 20),
-                          ),
-                        ),
-                      ],
-                    ),
-                  ],
-                ),
-              ),
+            ScoreBoard(
+              exScore: xScore,
+              ohScore: oScore,
             ),
             Expanded(
               flex: 4,
@@ -80,7 +55,7 @@ class _GameScreenState extends State<GameScreen> {
                       child: Center(
                         child: Text(
                           displayExOh[index],
-                          style: TextStyle(color: Colors.white, fontSize: 40),
+                          style: exOhStyle,
                         ),
                       ),
                     ),
@@ -92,6 +67,14 @@ class _GameScreenState extends State<GameScreen> {
               child: Container(),
             ),
           ],
+        ),
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: _clearBoard,
+        backgroundColor: Colors.white,
+        foregroundColor: Colors.grey[700],
+        child: Icon(
+          Icons.refresh,
         ),
       ),
     );
@@ -159,9 +142,6 @@ class _GameScreenState extends State<GameScreen> {
         displayExOh[0] != "") {
       _showWinDialog(displayExOh[0]);
     }
-    else if (displayExOh.every((element) => element.isNotEmpty)) {
-      _showWinDialog("DRAW");
-    }
   }
 
   void _showWinDialog(String winner) {
@@ -190,10 +170,8 @@ class _GameScreenState extends State<GameScreen> {
   }
 
   void _clearBoard() {
-    print("clear board called");
     setState(() {
       for (int i = 0; i < 9; i++) {
-        print(i);
         displayExOh[i] = "";
       }
     });
