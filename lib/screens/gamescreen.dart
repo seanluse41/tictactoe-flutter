@@ -37,30 +37,33 @@ class _GameScreenState extends State<GameScreen> {
             ),
             Expanded(
               flex: 4,
-              child: GridView.builder(
-                itemCount: 9,
-                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                    crossAxisCount: 3),
-                itemBuilder: (BuildContext context, int index) {
-                  return GestureDetector(
-                    onTap: () {
-                      _tapped(index);
-                    },
-                    child: Container(
-                      decoration: BoxDecoration(
-                        border: Border.all(
-                          color: Colors.grey[700],
+              child: Padding(
+                padding: const EdgeInsets.only(top: 20.0),
+                child: GridView.builder(
+                  itemCount: 9,
+                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                      crossAxisCount: 3),
+                  itemBuilder: (BuildContext context, int index) {
+                    return GestureDetector(
+                      onTap: () {
+                        _tapped(index);
+                      },
+                      child: Container(
+                        decoration: BoxDecoration(
+                          border: Border.all(
+                            color: Colors.grey[700],
+                          ),
+                        ),
+                        child: Center(
+                          child: Text(
+                            displayExOh[index],
+                            style: exOhStyle,
+                          ),
                         ),
                       ),
-                      child: Center(
-                        child: Text(
-                          displayExOh[index],
-                          style: exOhStyle,
-                        ),
-                      ),
-                    ),
-                  );
-                },
+                    );
+                  },
+                ),
               ),
             ),
             Expanded(
