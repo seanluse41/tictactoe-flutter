@@ -99,10 +99,10 @@ class _GameScreenState extends State<GameScreen> {
 
   void _tapped(index) {
     setState(() {
-      if (ohTurn && displayExOh[index] != "") {
+      if (ohTurn && displayExOh[index] == "") {
         displayExOh[index] = "O";
         ohTurn = !ohTurn;
-      } else if (!ohTurn && displayExOh[index] != "") {
+      } else if (!ohTurn && displayExOh[index] == "") {
         displayExOh[index] = "X";
         ohTurn = !ohTurn;
       }
@@ -159,6 +159,9 @@ class _GameScreenState extends State<GameScreen> {
         displayExOh[0] != "") {
       _showWinDialog(displayExOh[0]);
     }
+    else if (displayExOh.every((element) => element.isNotEmpty)) {
+      _showWinDialog("DRAW");
+    }
   }
 
   void _showWinDialog(String winner) {
@@ -170,7 +173,10 @@ class _GameScreenState extends State<GameScreen> {
             title: Text("WINNER IS: " + winner),
             actions: <Widget>[
               FlatButton(
-                onPressed: _clearBoard,
+                onPressed: () {
+                  _clearBoard();
+                  Navigator.of(context).pop();
+                },
                 child: Text("PLAY AGAIN?"),
               )
             ],
@@ -183,5 +189,13 @@ class _GameScreenState extends State<GameScreen> {
     }
   }
 
-  void _clearBoard() {}
+  void _clearBoard() {
+    print("clear board called");
+    setState(() {
+      for (int i = 0; i < 9; i++) {
+        print(i);
+        displayExOh[i] = "";
+      }
+    });
+  }
 }
