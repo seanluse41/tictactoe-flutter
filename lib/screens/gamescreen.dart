@@ -38,7 +38,7 @@ class _GameScreenState extends State<GameScreen> {
             Expanded(
               flex: 4,
               child: Padding(
-                padding: const EdgeInsets.only(top: 20.0),
+                padding: const EdgeInsets.only(top: 40.0),
                 child: GridView.builder(
                   itemCount: 9,
                   gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
@@ -174,8 +174,13 @@ class _GameScreenState extends State<GameScreen> {
 
   void _clearBoard() {
     setState(() {
-      for (int i = 0; i < 9; i++) {
-        displayExOh[i] = "";
+      if (displayExOh.every((element) => element.isEmpty)) {
+        oScore = 0;
+        xScore = 0;
+      } else {
+        for (int i = 0; i < 9; i++) {
+          displayExOh[i] = "";
+        }
       }
     });
   }
