@@ -12,3 +12,15 @@ final exOhStyle = GoogleFonts.pressStart2P(
     color: Colors.white, fontSize: 70,
   )
 );
+
+final playGameButton = GoogleFonts.pressStart2P(
+  textStyle: TextStyle(
+    color: Colors.black, fontSize: 20,
+  )
+);
+
+final introText = GoogleFonts.pressStart2P(
+  textStyle: TextStyle(
+    color: Colors.white, fontSize: 40,
+  )
+);

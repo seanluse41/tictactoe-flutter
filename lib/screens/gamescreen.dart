@@ -27,7 +27,7 @@ class _GameScreenState extends State<GameScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.grey[800],
+      backgroundColor: Colors.grey[900],
       body: SafeArea(
         child: Column(
           children: <Widget>[

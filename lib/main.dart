@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'screens/gamescreen.dart';
+import 'package:tictactoe/screens/introscreen.dart';
 
 void main() => runApp(TicTacToe());
 
@@ -7,11 +7,12 @@ class TicTacToe extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
+      debugShowCheckedModeBanner: false,
+      title: 'Tic Tac Toe Refactored',
       theme: ThemeData(
-        primarySwatch: Colors.blue,
+        primarySwatch: Colors.grey,
       ),
-      home: GameScreen(),
+      home: IntroScreen(),
     );
   }
 }
