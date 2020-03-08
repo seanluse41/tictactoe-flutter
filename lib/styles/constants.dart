@@ -21,6 +21,6 @@ final playGameButton = GoogleFonts.pressStart2P(
 
 final introText = GoogleFonts.pressStart2P(
   textStyle: TextStyle(
-    color: Colors.white, fontSize: 40,
+    color: Colors.white, fontSize: 35,
   )
 );

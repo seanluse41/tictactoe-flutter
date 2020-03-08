@@ -14,10 +14,13 @@ class IntroScreen extends StatelessWidget {
           children: <Widget>[
             Expanded(
               flex: 1,
-              child: Center(
-                child: Text(
-                  "TIC TAC TOE",
-                  style: introText,
+              child: Padding(
+                padding: const EdgeInsets.only(top: 20),
+                child: Center(
+                  child: Text(
+                    "TIC TAC TOE",
+                    style: introText,
+                  ),
                 ),
               ),
             ),
