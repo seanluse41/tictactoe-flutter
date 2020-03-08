@@ -25,6 +25,7 @@ dependencies:
   cupertino_icons: ^0.1.2
   google_fonts:
   avatar_glow:
+  page_transition:
 
 dev_dependencies:
   flutter_test:

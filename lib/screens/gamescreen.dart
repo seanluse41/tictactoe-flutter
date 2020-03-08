@@ -171,8 +171,13 @@ class _GameScreenState extends State<GameScreen> {
 
   void _clearBoard() {
     setState(() {
-      for (int i = 0; i < 9; i++) {
-        displayExOh[i] = "";
+      if (displayExOh.every((element) => element.isEmpty)) {
+        oScore = 0;
+        xScore = 0;
+      } else {
+        for (int i = 0; i < 9; i++) {
+          displayExOh[i] = "";
+        }
       }
     });
   }

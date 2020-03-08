@@ -2,6 +2,7 @@ import 'package:avatar_glow/avatar_glow.dart';
 import 'package:flutter/material.dart';
 import 'package:tictactoe/styles/constants.dart';
 import 'gamescreen.dart';
+import 'package:page_transition/page_transition.dart';
 
 class IntroScreen extends StatelessWidget {
   @override
@@ -53,8 +54,12 @@ class IntroScreen extends StatelessWidget {
             ),
             GestureDetector(
               onTap: () {
-                Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => GameScreen()));
+                Navigator.push(
+                    context,
+                    PageTransition(
+                        type: PageTransitionType.rotate,
+                        duration: Duration(seconds: 1),
+                        child: GameScreen()));
               },
               child: Padding(
                 padding: const EdgeInsets.all(25.0),
