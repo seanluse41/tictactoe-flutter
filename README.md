@@ -1,16 +1,6 @@
-# tictactoe
+Tic Tac Toe made in Flutter.
+Based on this great series of videos: https://www.youtube.com/watch?v=BZaXEIn9jE4
+I then decided to practice abstraction, component making, and some simple animations etc.
+While to the end user the result is the same, the code should be more DRY and easy to understand.
 
-A new Flutter project.
-
-## Getting Started
-
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
-
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+![Animated GIF of app](https://raw.githubusercontent.com/seanluse41/tictactoe-flutter/master/tictactoe.gif)
