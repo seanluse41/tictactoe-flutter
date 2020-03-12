@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:tictactoe/components/scoreboard.dart';
 import 'package:tictactoe/styles/constants.dart';
+import 'package:tictactoe/components/resetbutton.dart';
 
 class GameScreen extends StatefulWidget {
   @override
@@ -27,60 +28,59 @@ class _GameScreenState extends State<GameScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.grey[900],
-      body: SafeArea(
-        child: Column(
-          children: <Widget>[
-            ScoreBoard(
-              exScore: xScore,
-              ohScore: oScore,
-            ),
-            Expanded(
-              flex: 4,
-              child: Padding(
-                padding: const EdgeInsets.only(top: 40.0),
-                child: GridView.builder(
-                  itemCount: 9,
-                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                      crossAxisCount: 3),
-                  itemBuilder: (BuildContext context, int index) {
-                    return GestureDetector(
-                      onTap: () {
-                        _tapped(index);
-                      },
-                      child: Container(
-                        decoration: BoxDecoration(
-                          border: Border.all(
-                            color: Colors.grey[700],
+        backgroundColor: Colors.grey[900],
+        body: SafeArea(
+          child: Column(
+            children: <Widget>[
+              ScoreBoard(
+                exScore: xScore,
+                ohScore: oScore,
+              ),
+              Expanded(
+                flex: 4,
+                child: Padding(
+                  padding: const EdgeInsets.only(top: 40.0),
+                  child: GridView.builder(
+                    itemCount: 9,
+                    gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                        crossAxisCount: 3),
+                    itemBuilder: (BuildContext context, int index) {
+                      return GestureDetector(
+                        onTap: () {
+                          _tapped(index);
+                        },
+                        child: Container(
+                          decoration: BoxDecoration(
+                            border: Border.all(
+                              color: Colors.grey[700],
+                            ),
+                          ),
+                          child: Center(
+                            child: Text(
+                              displayExOh[index],
+                              style: exOhStyle,
+                            ),
                           ),
                         ),
-                        child: Center(
-                          child: Text(
-                            displayExOh[index],
-                            style: exOhStyle,
-                          ),
-                        ),
-                      ),
-                    );
-                  },
+                      );
+                    },
+                  ),
                 ),
               ),
-            ),
-            Expanded(
-              child: Container(),
-            ),
-          ],
+              Expanded(
+                child: Container(),
+              ),
+            ],
+          ),
         ),
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _clearBoard,
-        backgroundColor: Colors.white,
-        foregroundColor: Colors.grey[700],
-        child: Icon(
-          Icons.refresh,
-        ),
-      ),
-    );
+        floatingActionButton: displayExOh.every((element) => element == "")
+            ? ResetBoardButton(
+                resetFunction: _clearScore,
+                resetIcon: Icons.remove_circle_outline)
+            : ResetBoardButton(
+                resetFunction: _clearBoard,
+                resetIcon: Icons.refresh,
+              ));
   }
 
   void _tapped(index) {
@@ -174,14 +174,16 @@ class _GameScreenState extends State<GameScreen> {
 
   void _clearBoard() {
     setState(() {
-      if (displayExOh.every((element) => element.isEmpty)) {
-        oScore = 0;
-        xScore = 0;
-      } else {
-        for (int i = 0; i < 9; i++) {
-          displayExOh[i] = "";
-        }
+      for (int i = 0; i < 9; i++) {
+        displayExOh[i] = "";
       }
+    });
+  }
+
+  void _clearScore() {
+    setState(() {
+      xScore = 0;
+      oScore = 0;
     });
   }
 }
